@@ -4,4 +4,4 @@ My name is Huaqi Zhang. My major is computer science, and my minor is art studio
 
 I hope I can learn back-end knowledge and more knowledge about front-end. I will use what I have learned in my future work. I am very excited about the project we will do this semester. I may try to create my own website by using what we learn in this class, I think it will be cool.
 
-[link to Google!](http://google.com)
+![Photo](https://octodex.github.com/images/yaktocat.png)
