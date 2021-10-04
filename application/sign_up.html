@@ -6,11 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <title>Sign up</title>
-    <style>
-    </style>
 </head>
 <body>
-    <section class="section is-mobile">
+    <section class="section">
         <div class="container">
             <div class="columns is-centered">
                 <div class="column is-two-fifths">
@@ -41,7 +39,8 @@
                     
                         <button class="button is-primary">Sign Up</button>
 
-                        <div>By signing up, you agree to</div>
+                        <div>By signing up, you agree to blablablabla</div>
+                        <br>
                         <div id="message" :style="`${visible ? '' : `display:none`}`">
                             <h3>Password must contain the following:</h3>
                             <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
@@ -51,27 +50,10 @@
                         </div>
                     </form>
 
-                    <div>Already have an account <a href="sign_in.html">Sign in</div>
+                    <div>Already have an account? <a href="sign_in.html">Sign in</div>
                 </div>
             </div>
         </div>
     </section>
-
-    <script>
-        const Password = {
-            data(){
-                return {
-                    display: none,
-                }
-            },
-            methods: {
-                message(){
-                   this.display = "block"; 
-                }   
-            }
-        }
-
-        Vue.createApp(Counter).mount('.section')
-    </script>
 </body>
 </html>
