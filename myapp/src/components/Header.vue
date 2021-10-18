@@ -10,8 +10,19 @@
                 Exercise Log
                 </router-link>
             </div>
+
+            <div v-if="!Session.user">
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <router-link class="button is-primary" to="/signin">Sign in</router-link>
+                            <router-link class="button is-light" to="/signup">Sign up</router-link>
+                        </div>
+                    </div> 
+                </div>
+            </div>
                  
-            <div class="navbar-end">
+            <div class="navbar-end" v-else>
                 <div class="navbar-item">
                     <div class="navbar-item has-dropdown is-hoverable">
                         <figure class="image is-36x36">
@@ -25,20 +36,27 @@
                         <a class="navbar-item">
                             Change password
                         </a>
-                        <router-link class="navbar-item" to="/">
+                        <a class="navbar-item">
                             Sign out
-                        </router-link>
+                        </a>
                         </div>
                     </div>
                 </div> 
             </div>
+    
         </div>
     </nav>
 </template>
 
 <script>
-export default {
+import Session from '../services/session';
 
+export default {
+    data() {
+        return {
+            Session
+        }
+    }
 }
 </script>
 

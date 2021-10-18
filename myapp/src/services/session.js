@@ -13,6 +13,7 @@ const session = {
             }
         }
         if(email === 'zhangh8@1' && password === '123') {
+            this.user = "Huaqi";
            router.push(this.toRoute); 
         }
     }
