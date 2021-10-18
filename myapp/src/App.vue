@@ -1,15 +1,15 @@
 <template>
-  <Home />
+  <Signin />
 <router-view/>
 
 </template>
 
 <script>
-import Home from './views/Home.vue';
+import Signin from './views/Signin.vue';
 
 export default {
     components: {
-        Home
+        Signin
     }
 }
 </script>
