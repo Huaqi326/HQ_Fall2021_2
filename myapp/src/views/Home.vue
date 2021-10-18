@@ -1,8 +1,8 @@
 <template>
 <div>
   <div class="background-img"></div>
-    <button class="sign_in"> <router-link to="/signin">Sign In</router-link></button>
-    <button class="sign_up"> <router-link to='/signup'>Sign Up</router-link></button>
+    <a class="sign_in" href="/signin">Sign In</a>
+    <a class="sign_up" href='/signup'>Sign Up</a>
 </div>
 </template>
 
