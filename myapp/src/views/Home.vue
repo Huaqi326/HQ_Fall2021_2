@@ -1,7 +1,7 @@
 <template>
 <div>
-    <a class="sign_in" href="/signin">Sign In</a>
-    <a class="sign_up" href='/signup'>Sign Up</a>
+    <router-link class="sign_in" to="/signin">Sign In</router-link>
+    <router-link class="sign_up" to='/signup'>Sign Up</router-link>
 </div>
 </template>
 
