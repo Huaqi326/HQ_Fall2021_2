@@ -36,3 +36,9 @@
             border-radius: 5px;
         }
 </style>
+
+<script>
+export default {
+    
+}
+</script>
