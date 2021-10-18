@@ -1,0 +1,59 @@
+<template>
+   <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-two-fifths">
+                    <div class="content has-text-centered">
+                        <h1>Sign Up</h1>
+                    </div>
+                    <form class="box">
+                        <div class="field">
+                            <label class="label">Username</label>
+                            <div class="control">
+                                <input class="input is-success" type="text">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Email</label>
+                            <div class="control">
+                                <input class="input is-success" type="email" placeholder="e.g. alex@example.com">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Password</label>
+                            <div class="control">
+                                <input class="input is-success" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="********">
+                            </div>
+                        </div>
+
+                        <button class="button is-primary">Sign Up</button>
+
+                        <div>By signing up, you agree to blablablabla</div>
+                        <br>
+                        <div id="message" :style="`${visible ? '' : `display:none`}`">
+                            <h3>Password must contain the following:</h3>
+                            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+                            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+                            <p id="number" class="invalid">A <b>number</b></p>
+                            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+                        </div>
+                    </form>
+
+                    <div>Already have an account? <router-link to="/signin">Sign in</router-link></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>
