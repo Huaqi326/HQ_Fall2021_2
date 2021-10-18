@@ -1,7 +1,9 @@
 <template>
+<div>
   <div class="background-img"></div>
     <router-link class="sign_in" to="/signin">Sign In</router-link>
     <router-link class="sign_up" to='/signup'>Sign Up</router-link>
+</div>
 </template>
 
 <style>
