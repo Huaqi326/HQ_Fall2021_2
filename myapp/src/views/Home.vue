@@ -1,6 +1,5 @@
 <template>
 <div>
-  <div class="background-img"></div>
     <a class="sign_in" href="/signin">Sign In</a>
     <a class="sign_up" href='/signup'>Sign Up</a>
 </div>
