@@ -2,5 +2,5 @@ module.exports = {
   presets: [
     '@vue/cli-plugin-babel/preset'
   ],
-  publicPath: "/myapp/"
+  publicPath: "/myapp/public/"
 }
