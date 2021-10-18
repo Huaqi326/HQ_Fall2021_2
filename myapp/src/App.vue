@@ -4,17 +4,12 @@
     <router-link to="/about">About</router-link>
   </div>
   <router-view/> -->
-  <Home />
+  <div>
+  Test
   <router-view/>
+  </div>
 </template>
 
 <script>
-import Home from "../views/Home.vue";
-
-export default {
-    components: {
-        Home
-    }
-}
 </script>
 
