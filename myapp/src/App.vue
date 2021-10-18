@@ -4,10 +4,7 @@
     <router-link to="/about">About</router-link>
   </div>
   <router-view/> -->
-  <div>
-  Test
   <router-view/>
-  </div>
 </template>
 
 <script>
