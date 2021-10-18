@@ -4,9 +4,17 @@
     <router-link to="/about">About</router-link>
   </div>
   <router-view/> -->
+  <Home />
   <router-view/>
 </template>
 
-<style lang="scss">
+<script>
+import Home from "../views/Home.vue";
 
-</style>
+export default {
+    components: {
+        Home
+    }
+}
+</script>
+
