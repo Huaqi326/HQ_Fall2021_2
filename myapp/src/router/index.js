@@ -1,17 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import Intro from '../views/Intro.vue'
 import Signin from '../views/Signin.vue'
 import Signup from '../views/Signup.vue'
 import Main from '../views/Main.vue'
 import Exerciselog from '../views/Exerciselog.vue'
 import Profile from '../views/Profile.vue'
 import Profileinfor from '../views/Profileinfor.vue'
+import UserManage from '../views/UserManage.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Intro',
+    component: Intro
   },
   {
     path: '/signin',
@@ -42,6 +43,11 @@ const routes = [
     path: '/profileinfor',
     name: 'Profileinfor',
     component: Profileinfor
+  },
+  {
+    path: '/usermanage',
+    name: 'UserManage',
+    component: UserManage
   }
   // {
   //   path: '/about',
@@ -54,8 +60,17 @@ const routes = [
 ]
 
 const router = createRouter({
+  mode: 'history',
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+    if(to.meta.requiresLogin && !Session.user){
+        next('/signin');
+    }else{
+        next();
+    }
+  } )
 
 export default router

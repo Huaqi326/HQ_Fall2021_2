@@ -6,39 +6,36 @@
                     <div class="content has-text-centered">
                         <h1>Sign Up</h1>
                     </div>
-                    <form class="box">
-                        <div class="field">
-                            <label class="label">Username</label>
-                            <div class="control">
-                                <input class="input is-success" type="text">
-                            </div>
-                        </div>
-
+                    <form class="box" @submit.prevent="Signup()">
                         <div class="field">
                             <label class="label">Email</label>
                             <div class="control">
-                                <input class="input is-success" type="email" placeholder="e.g. alex@example.com">
+                                <input class="input is-success" type="email" placeholder="e.g. alex@example.com" v-model="newuser.handle">
                             </div>
                         </div>
 
                         <div class="field">
                             <label class="label">Password</label>
                             <div class="control">
-                                <input class="input is-success" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="********">
+                                <input class="input is-success" type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="********" v-model="newuser.password">
+                                <div>
+                                    Password should contain at least
+                                    <ul>
+                                        <li>· 8 chacters</li>
+                                        <li>· one uppercase letter</li>
+                                        <li>· one lowercase letter</li>
+                                        <li>· one number</li>
+                                    </ul>  
+                                </div>
                             </div>
+                        </div>
+                        
+                        <div class="field">
+                            <input type="checkbox" v-model="user.accept" id="accept"> By clicking Sign Up, you agree to our terms of services
                         </div>
 
                         <button class="button is-primary">Sign Up</button>
-
-                        <div>By signing up, you agree to blablablabla</div>
-                        <br>
-                        <div id="message" :style="`${visible ? '' : `display:none`}`">
-                            <h3>Password must contain the following:</h3>
-                            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-                            <p id="number" class="invalid">A <b>number</b></p>
-                            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-                        </div>
+                            
                     </form>
 
                     <div>Already have an account? <router-link to="/signin">Sign in</router-link></div>
@@ -49,8 +46,31 @@
 </template>
 
 <script>
-export default {
+import Session from '../services/session';
 
+export default {
+    data:() => {
+        return {
+            newuser:{
+                handle: null,
+                password: null,
+            },
+            Session,
+            user: {
+                accept: false
+            },
+         };
+    },
+    methods: {
+        Signup(){
+            if(this.user.accept == true) {
+                alert("After you sign up, please signin again to visit your home page");
+                this.Session.Signup(this.newuser);
+            }else{
+                alert("please agree the terms of services");
+            }
+        }
+    }
 }
 </script>
 

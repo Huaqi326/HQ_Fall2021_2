@@ -1,22 +1,44 @@
-import router from "../router/index";
+import { isEmpty, update } from "lodash";
+import router from "../router";
+import { Signin, Add, GetByHandle, Update } from "./users";
 
 const session = {
     user: null,
+    messages: [],       // {text: string, type: string }
     toRoute: '/main',
-    Signin(email, password){
-        if(email !== 'zhangh8@1'){
-            throw { code: 400, msg: "Sorry, there is no match email(zhangh8@1)" }
+    async Signin(email, password){
+
+        try {
+            const response = await Signin(email, password);
+
+            this.user = response.user;
+    
+            router.push(this.toRoute);
+                
+        } catch (error) {
+            this.Error(error);
         }
-        if(email === 'zhangh8@1'){
-            if(password !== '123'){
-                throw { code: 400, msg: "Password is not correct(123)" }
-            }
+    },
+    async Signup(user) {
+        const response = await GetByHandle(user.handle);
+        if(isEmpty(response)) {
+            await Add(user);
+            router.push('/signin');
+        }else{
+            alert("This email address already registered")
         }
-        if(email === 'zhangh8@1' && password === '123') {
-            this.user = "Huaqi";
-           router.push(this.toRoute); 
-        }
+    },
+    async Update(user_id, user) {
+        await Update(user_id, user);
+    },
+    Error(error){
+        console.error(error);
+        let msg;
+        if(msg = error.msg)
+            alert(msg);
     }
 };
 
 export default session;
+
+//export function

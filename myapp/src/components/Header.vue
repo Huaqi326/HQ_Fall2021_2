@@ -1,5 +1,6 @@
 <template>
-        <nav class="navbar" role="navigation" aria-label="main navigation">      
+<div class="column is-full">
+        <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">      
             <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 <router-link class="navbar-item" to="/main">
@@ -7,7 +8,11 @@
                 </router-link>
         
                 <router-link class="navbar-item" to="/log">
-                Exercise Log
+                    Exercise Log
+                </router-link>
+
+                <router-link class="navbar-item" to="/usermanage" v-if="Session.user.isAdmin == true">
+                    Admin Manage
                 </router-link>
             </div>
 
@@ -25,7 +30,19 @@
             <div class="navbar-end" v-else>
                 <div class="navbar-item">
                     <div class="navbar-item has-dropdown is-hoverable">
-                        <figure class="image is-36x36">
+                        <div class="username" v-if="Session.user.userName">
+                            Dear {{Session.user.userName}}
+                        </div>
+
+                        <div class="username" v-else>
+                            Dear {{Session.user.handle}}
+                        </div>
+
+                        <figure class="image is-36x36" v-if="Session.user.pic">
+                            <img class="is-rounded" :src="image">
+                        </figure>
+
+                         <figure class="image is-36x36" v-else>
                             <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
                         </figure>
                 
@@ -33,12 +50,9 @@
                         <router-link class="navbar-item" to="/profile">
                             Profile
                         </router-link>
-                        <a class="navbar-item">
-                            Change password
-                        </a>
-                        <a class="navbar-item">
+                        <router-link class="navbar-item" to="/">
                             Sign out
-                        </a>
+                        </router-link>
                         </div>
                     </div>
                 </div> 
@@ -46,6 +60,7 @@
     
         </div>
     </nav>
+    </div>
 </template>
 
 <script>
@@ -54,12 +69,17 @@ import Session from '../services/session';
 export default {
     data() {
         return {
-            Session
+            Session,
+            image:Session.user.pic
         }
     }
 }
 </script>
 
 <style>
-
+.username{
+    position:relative;
+    right: 10px;
+    text-decoration: underline;
+}
 </style>

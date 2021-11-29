@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import Session from '../services/session'
+import Session from '../services/session';
 
 export default {
   data: () => ({
