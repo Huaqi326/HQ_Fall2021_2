@@ -1,8 +1,9 @@
 <template>
-<router-view v-slot="{ Component }">
-  <keep-alive include="Intro">
+<!-- <router-view v-slot="{ Component }"> -->
+  <router-view>
+  <!-- <keep-alive include="Intro">
     <component :is="Component" />
-  </keep-alive>
+  </keep-alive> -->
 </router-view>
 </template>
 
