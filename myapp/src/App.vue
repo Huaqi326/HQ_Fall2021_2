@@ -1,10 +1,10 @@
 <template>
 <!-- <router-view v-slot="{ Component }"> -->
-  <router-view>
+  <!-- <router-view> -->
   <!-- <keep-alive include="Intro">
     <component :is="Component" />
   </keep-alive> -->
-</router-view>
+<router-view />
 </template>
 
 <script>
