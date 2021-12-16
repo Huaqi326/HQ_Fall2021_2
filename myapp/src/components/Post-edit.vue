@@ -22,6 +22,11 @@
                     </div>
                 </div>
 
+                <div class="field">
+                    <label class="label">Tag a friend</label>
+                    <div>Only the people who approved will be in this list.</div>
+                    <SearchAutocomplete :items="item" />
+                </div>
             </div>
         </div>
         <footer class="card-footer">
@@ -31,13 +36,31 @@
 </template>
 
 <script>
+import SearchAutocomplete from './TagFriend.vue';
+import { GetByHandle } from '../services/users.js';
+import Session from '../services/session';
+
 export default {
+    name: 'Tag',
+    components: {
+        SearchAutocomplete
+    },
     props: {
-        newpost: Object
+        newpost: Object,
     },
      data() {
         return {
-            post: this.newpost
+            post: this.newpost,
+            Session,
+            item: []
+        }
+    },
+    async mounted() {
+        const response = await GetByHandle(Session.user.handle);
+        for(var i = 0; i < Session.user.following.length; i++) {
+            if(response.following[i].isApproved == true) {
+                this.item.push(response.following[i].handle);
+            }
         }
     }
 }
